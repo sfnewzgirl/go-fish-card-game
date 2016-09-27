@@ -1,13 +1,42 @@
 class PlayingCard
-  # initialize
+  attr_reader :rank, :suit
+
+  def initialize(arg)
+    @rank = arg[:rank]
+    @suit = arg[:suit]
+  end
+
+  def to_s
+    rank.to_s + suit.to_s
+  end
+
+  def face
+    rank.to_s + suit.to_s
+  end
 end
 
 class CardDeck
-  # initialize
+  attr_reader :cards
+  
+  def initialize(arg)
+    @cards = []
+    for i in 1..52
+      card = PlayingCard.new(rank: 'A', suit: 'C')
+      @cards << card
+    end
+  end
 end
 
 class HandOfCards
-  # initialize
+  def initialize(starting_cards=[])
+    @cards = starting_cards
+    @hand = starting_cards
+  end
+
+  def draw
+    @cards.pop
+    @cards
+  end
 end
 
 class CardPlayer
